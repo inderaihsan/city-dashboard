@@ -140,7 +140,7 @@ if kelurahan:
          st.markdown("""
     <style>
     .legend-container {
-        background-color: rgba(255,255,255,0.9);
+        background-color: rgba(0,0,0,0);
         padding: 10px;
         border-radius: 8px;
         width: 200px;
