@@ -14,7 +14,9 @@ gdf = gpd.read_file("data/mapid_data.geojson")
 kelurahan = st.multiselect("Pilih Kelurahan", gdf['DESA ATAU KELURAHAN'].unique())
 
 if kelurahan:
-    gdf = gdf[gdf['DESA ATAU KELURAHAN'].isin(kelurahan)]
+    gdf = gdf[gdf['DESA ATAU KELURAHAN'].isin(kelurahan)] 
+else : 
+    gdf = gdf
     col1, col2 = st.columns(2, vertical_alignment="top")
 
     with col1:
