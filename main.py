@@ -11,7 +11,7 @@ st.title("Bogor Dalam Peta")
 
 # Load batas kelurahan
 gdf = gpd.read_file("data/mapid_data.geojson")
-kelurahan = st.multiselect("Pilih Kelurahan", gdf['DESA ATAU KELURAHAN'].unique())
+kelurahan = st.multiselect("Filter data berdasarkan kelurahan", gdf['DESA ATAU KELURAHAN'].unique())
 
 if kelurahan:
     gdf = gdf[gdf['DESA ATAU KELURAHAN'].isin(kelurahan)] 
@@ -67,7 +67,7 @@ else :
     poi_dfs = []
     for poi_type, file_path in poi_files.items():
         df = gpd.read_file(file_path)
-        df = df[df['DESA ATAU KELURAHAN'].isin(kelurahan)]
+        df = df[df['DESA ATAU KELURAHAN'].isin(kelurahan)] if kelurahan else df
         df["type"] = poi_type
         poi_dfs.append(df)
 
