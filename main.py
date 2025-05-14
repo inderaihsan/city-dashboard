@@ -18,12 +18,12 @@ if kelurahan:
     col1, col2 = st.columns(2, vertical_alignment="top")
 
     with col1:
-        st.subheader("Jumlah Penduduk")
-        st.subheader(np.round(gdf['JUMLAH PENDUDUK'].sum(), 3))
+        st.header("Luas Wilayah (KM²)")
+        st.subheader(np.round(gdf['LUAS WILAYAH (KM²)'].sum(), 3))
 
     with col2:
-        st.subheader("Kepadatan (jiwa/km²) ")
-        st.subheader(np.round(gdf['KEPADATAN PENDUDUK (JIWA/KM²)'].sum() , 3)) 
+        st.subheader("Jumlah Penduduk")
+        st.subheader(np.round(gdf['JUMLAH PENDUDUK'].sum(), 3))
         
     radiolayer = st.radio("Layer Map", ["Satelite", "None"])
 
