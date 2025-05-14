@@ -5,7 +5,9 @@ import pydeck as pdk
 import json
 import numpy as np
 
+st.set_page_config(page_title=None, page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
 st.title("Bogor Dalam Peta") 
+
 
 # Load batas kelurahan
 gdf = gpd.read_file("data/mapid_data.geojson")
@@ -338,4 +340,5 @@ if kelurahan:
         st.plotly_chart(fig_pendidikan, use_container_width=True)
 
     with col6:
-        st.plotly_chart(fig_jk, use_container_width=True)
+        st.plotly_chart(fig_jk, use_container_width=True) 
+    
