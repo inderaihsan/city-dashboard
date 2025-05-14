@@ -8,7 +8,7 @@ import numpy as np
 st.set_page_config(page_title=None, page_icon=None, layout="wide", initial_sidebar_state="auto", menu_items=None)
 st.title("Bogor Dalam Peta") 
 
-
+# "JUMLAH PENDUDUK": 28391, "JUMLAH KK": 8767
 # Load batas kelurahan
 gdf = gpd.read_file("data/mapid_data.geojson")
 kelurahan = st.multiselect("Pilih kelurahan", gdf['DESA ATAU KELURAHAN'].unique())
@@ -18,11 +18,11 @@ if kelurahan:
     col1, col2 = st.columns(2, vertical_alignment="top")
 
     with col1:
-        st.header("Luas Wilayah (KM²)")
-        st.subheader(np.round(gdf['LUAS WILAYAH (KM²)'].sum(), 3))
+        st.subheader("Jumlah Penduduk")
+        st.subheader(np.round(gdf['JUMLAH PENDUDUK'].sum(), 3))
 
     with col2:
-        st.header("Kepadatan (jiwa/km²) ")
+        st.subheader("Kepadatan (jiwa/km²) ")
         st.subheader(np.round(gdf['KEPADATAN PENDUDUK (JIWA/KM²)'].sum() , 3)) 
         
     radiolayer = st.radio("Layer Map", ["Satelite", "None"])
