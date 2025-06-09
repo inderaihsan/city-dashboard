@@ -1,0 +1,39 @@
+[[pages]]
+name = "Miscellaneous"
+icon = ":pig:"
+is_section = true
+
+[[pages]]
+path = "1_About_me.py"
+name = "About Me"
+icon = "📄"
+
+
+[[pages]]
+name = "GIS ? Something"
+icon = "🌎" 
+is_section = true 
+
+
+[[pages]]
+name = "Bogor Dalam Peta" 
+path = "2_Bogor_dalam_peta.py"
+
+[[pages]]
+name = "Excel to shp converter" 
+path = "excel_to_shp.py"
+
+[[pages]]
+name = "Stats ? Something"
+icon = "📶" 
+is_section = true 
+
+
+[[pages]]
+name = "Performing regression with your data" 
+path = "regression_analysis.py"
+
+
+
+
+
