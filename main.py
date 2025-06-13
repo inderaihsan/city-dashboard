@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 
-from st_pages import add_page_title, get_nav_from_toml
+from st_pages import add_page_title, get_nav_from_toml, hide_pages
 
 st.set_page_config(layout="wide")
 
@@ -12,11 +12,15 @@ nav = get_nav_from_toml(
 )
 
 
-print(os.listdir('.streamlit/'))
+# print(os.listdir('.streamlit/'))
 
 
 pg = st.navigation(nav)
-
+hide_pages(
+    [
+        # "Automated Valuation Model",
+    ],
+)
 add_page_title(pg)
 
 pg.run()
