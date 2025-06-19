@@ -8,7 +8,7 @@ st.set_page_config(layout="wide")
 sections = True
 
 nav = get_nav_from_toml(
-    ".streamlit/pages_sections.toml" if sections else ".streamlit/pages.toml"
+    ".streamlit/pages_sections.toml"
 )
 
 
@@ -16,11 +16,11 @@ nav = get_nav_from_toml(
 
 
 pg = st.navigation(nav)
-hide_pages(
-    [
-        # "Automated Valuation Model",
-    ],
-)
+# hide_pages(
+#     [
+#         # "Automated Valuation Model",
+#     ],
+# )
 add_page_title(pg)
 
 pg.run()
