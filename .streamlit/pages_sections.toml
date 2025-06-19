@@ -1,57 +1,54 @@
 [[pages]]
 name = "Miscellaneous"
-icon = "🗃️"
+icon = "📦"  # safe fallback for "miscellaneous"
 is_section = true
 
 [[pages]]
 path = "1_About_me.py"
 name = "About Me"
-
+icon = "👤"
 
 [[pages]]
 name = "GIS ? Something"
-icon = "🌎" 
-is_section = true 
-
+icon = "🌍"  # fallback for globe
+is_section = true
 
 [[pages]]
 name = "Bogor Dalam Peta" 
 path = "2_Bogor_dalam_peta.py"
+icon = "🗺️"
 
 [[pages]]
 name = "Excel to shp converter" 
 path = "excel_to_shp.py"
+icon = "📄"
 
 [[pages]]
 name = "Automated Valuation Model" 
 path = "avm beta.py"
+icon = "🏠"
 
 [[pages]]
 name = "Stats ? Something"
-icon = "📶" 
-is_section = true 
+icon = "📊"
+is_section = true
 
 [[pages]]
 name = "Performing regression with your data" 
 path = "regression_analysis.py"
-
+icon = "📈"
 
 [[pages]]
 name = "Regression enhanced random forests" 
 path = "Rerf.py"
-
-
+icon = "🌲"
 
 [[pages]]
 name = "AI ? Something"
-icon = "✨" 
-is_section = true 
+icon = "💡"
+is_section = true
 
 [[pages]]
 name = "Plaud Agent"
-path = "Plaud.py" 
-
-
-
-
-
+path = "Plaud.py"
+icon = "🤖"
