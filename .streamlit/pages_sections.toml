@@ -35,6 +35,13 @@ is_section = true
 name = "Performing regression with your data" 
 path = "regression_analysis.py"
 
+
+[[pages]]
+name = "Regression enhanced random forests" 
+path = "Rerf.py"
+
+
+
 [[pages]]
 name = "AI ? Something"
 icon = "✨" 
