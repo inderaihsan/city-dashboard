@@ -40,7 +40,7 @@ engine = create_engine('postgresql://kjpprhr:rhrdatascience@13.229.240.204:5432/
 st.title("How to Use This App")
 st.write("Click on the map to select a point for property analysis. The app will then provide insights into the selected area, including property prices, amenities, and other relevant factors.") 
 st.write("Use the draw marker point tool to select a point on the map. After placing the point, you can fill out the property input form to get predictions and analysis.")
-with st.container() : 
+with st.expander() : 
     m = folium.Map(location=[-6.2, 106.8], zoom_start=11)
     draw = Draw(
         draw_options={
