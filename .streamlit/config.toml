@@ -1,0 +1,12 @@
+[theme]
+primaryColor = "#4285F4"  # A professional, clear blue (Google Blue is a good example of this kind of blue often used for tech interfaces)
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F7F8FA" # A very subtle off-white/light gray for secondary elements
+textColor = "#212121"      # A slightly darker, more impactful text color
+font = "sans serif"        # Good general choice. For a more specific Anthropic-like feel,
+                           # you might consider "Roboto", "Inter", or "Open Sans" if you were to
+                           # specify a web font via st.markdown(unsafe_allow_html=True) or custom CSS,
+                           # but for the default Streamlit font option, "sans serif" is appropriate.
+
+# Optional: You can also set a base theme if you want to inherit from Streamlit's default light or dark.
+base = "light"
