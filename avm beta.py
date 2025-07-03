@@ -55,8 +55,7 @@ with st.expander(label='Map Viewer', expanded=True):
     )
     draw.add_to(m)
     folium.LayerControl().add_to(m)
-
-    click_data = st_folium(m, width=1350, height=500)
+    click_data = folium_static(m, width=1350, height=500)
 
 if click_data and 'last_active_drawing' in click_data and click_data['last_active_drawing']:
     geom_geojson = click_data['last_active_drawing']['geometry']
