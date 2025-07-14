@@ -43,12 +43,43 @@ name = "Regression enhanced random forests"
 path = "Rerf.py"
 icon = "🌲"
 
+
 [[pages]]
-name = "AI ? Something"
+name = "Work Life Balance Analysis" 
+path = "wlb.py"
+icon = "🌲"
+
+[[pages]]
+name = "AI ? Playground Something"
 icon = "💡"
 is_section = true
 
+# [[pages]]
+# name = "Plaud Agent"
+# path = "Plaud.py"
+# icon = "🤖"
+
+# [[pages]]
+# name = "Aing FARIS"
+# path = "aingfaris.py"
+# icon = "🤖"
+
+# [[pages]]
+# name = "Aing Indro"
+# path = "indera_ai.py"
+# icon = "🤖"
+
+
+# [[pages]]
+# name = "RBCM-LITE"
+# icon = "📊"
+# path = "rbcm_lite.py"
+
+
 [[pages]]
-name = "Plaud Agent"
-path = "Plaud.py"
-icon = "🤖"
+name = "Statistic, Machine learning and python quiz"
+icon = "📊"
+path = "podomoro.py"
+
+
+

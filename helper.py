@@ -451,8 +451,21 @@ def visualize_poi_by_wkt(draw_geometry_wkt, engine):
                 gdf = gdf.clip(drawn_gdf)
                 gdf.explore(m=m, color=color, name=label, marker_kwds={'radius': 4, 'fillOpacity': 0.6})
             if(table_name == 'property_data_with_geometry'):
-                df_property_data = gdf 
-                
+                df_property_data = gdf
+                gdf['harga_penawaran'] = pd.to_numeric(gdf['harga_penawaran'], errors='coerce' ) 
+                gdf['diskon'] = pd.to_numeric(gdf['diskon'], errors='coerce' ) 
+                gdf['luas_tanah'] = pd.to_numeric(gdf['luas_tanah'], errors='coerce' )
+                gdf['tahun'] = pd.to_numeric(gdf['tahun'], errors='coerce' ) 
+                gdf = gdf[gdf['harga_penawaran'] > 0]
+                gdf = gdf[gdf['luas_tanah'] > 0]
+                gdf = gdf[gdf['tahun'] > 0]
+                gdf = gdf[gdf['diskon'] >= 0]
+                gdf = gdf[gdf['diskon'] <= 100]
+              
+                gdf['hpm'] = gdf['harga_penawaran'] * (1 - (gdf['diskon']/100))/gdf['luas_tanah']
+                gdf = gdf[['hpm', 'lebar_jalan_di_depan', 'kondisi_wilayah_sekitar','tahun', 'luas_tanah','geometry', 'jenis_objek']] 
+                # gdf = gdf[gdf['jenis_objek']==1]
+            
             gdf.explore(
                 m=m,
                 color=color,
