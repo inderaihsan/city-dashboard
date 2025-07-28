@@ -19,7 +19,7 @@ st.set_page_config(layout="wide")
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 engine = create_engine(
-    "postgresql://kjpprhr:rhrdatascience@13.229.240.204:5432/geodb"
+    f"postgresql://{st.secrets['database']['user']}:{st.secrets['database']['password']}@{st.secrets['database']['host']}:{st.secrets['database']['port']}/{st.secrets['database']['name']}"
 )
 
 # ——— CACHES FOR PERFORMANCE ———
