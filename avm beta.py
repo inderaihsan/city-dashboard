@@ -12,7 +12,9 @@ import requests
 import pyproj
 from openai import OpenAI
 
-# ——— CONFIGURATION ———
+# ——— CONFIGURATION ——— 
+
+
 st.set_page_config(layout="wide")
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
@@ -49,7 +51,12 @@ def fetch_visuals(buffer_wkt: str):
     # visualize_poi_by_wkt now returns 6 items: (map_viz, bar_fig, land_price_kde, yearly_price_development, surrounding_environment, prop_df)
     return visualize_poi_by_wkt(buffer_wkt, engine)
 
+
+
+
 # ——— SESSION STATE INITIALIZATION ———
+
+st.session_state['authorized']=False
 if "selected_geojson" not in st.session_state:
     st.session_state.selected_geojson = None
 if "map_center" not in st.session_state:
@@ -62,7 +69,16 @@ if "messages" not in st.session_state:
             "You are a seasoned property consultant in Indonesia. "
             "Based on the data provided, give clear, concise recommendations."
         )}
-    ]
+    ] 
+if st.session_state['authorized']==False : 
+    st.warning("This is a classified project, kindly contact inderaihsan@gmail.com for accessing") 
+    password_ = st.text_input(type='password', label='input password') 
+    if (password_ == st.secrets['ADMIN_PASSWORD']) : 
+        st.session_state.authorized = True 
+    else : 
+        st.error("Unauthorized access..")
+        st.session_state.authorized = False
+        st.stop()
 # pinned_context holds the permanent data_summary
 if "pinned_context" not in st.session_state:
     st.session_state.pinned_context = None
