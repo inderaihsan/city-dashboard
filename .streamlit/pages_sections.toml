@@ -9,34 +9,40 @@ name = "About Me"
 icon = "👨🏻‍🚀"
 
 [[pages]]
-name = "GIS ? Something"
-icon = "🌍"  # fallback for globe
+name = "Some random Application (made for fun)"
+icon = "📦"  # fallback for globe
 is_section = true
 
 [[pages]]
 name = "Bogor Dalam Peta" 
 path = "2_Bogor_dalam_peta.py"
-icon = "🗺️"
+icon = "📦"
 
 [[pages]]
 name = "Excel to shp converter" 
 path = "excel_to_shp.py"
-icon = "📄"
+icon = "📦"
 
 [[pages]]
-name = "Property" 
+name = "Statsmodel API for statistical analysis" 
+path = "regression_analysis.py"
+icon = "📦"
+
+[[pages]]
+name = "Geo-Point property analyst" 
 path = "avm beta.py"
-icon = "🏠"
+icon = "📦"
 
 [[pages]]
-name = "Stats ? Something"
-icon = "📊"
+name = "AI Assisted Statistic, Machine learning and python quiz"
+icon = "📦"
+path = "podomoro.py"
+
+[[pages]]
+name = "Research, Notebook and Data Story Telling"
+icon = "🌲"
 is_section = true
 
-[[pages]]
-name = "Performing regression with your data" 
-path = "regression_analysis.py"
-icon = "📈"
 
 [[pages]]
 name = "Regression enhanced random forests" 
@@ -49,37 +55,10 @@ name = "Work Life Balance Analysis"
 path = "wlb.py"
 icon = "🌲"
 
-[[pages]]
-name = "AI ? Playground Something"
-icon = "💡"
-is_section = true
-
-# [[pages]]
-# name = "Plaud Agent"
-# path = "Plaud.py"
-# icon = "🤖"
-
-# [[pages]]
-# name = "Aing FARIS"
-# path = "aingfaris.py"
-# icon = "🤖"
-
-# [[pages]]
-# name = "Aing Indro"
-# path = "indera_ai.py"
-# icon = "🤖"
 
 
-# [[pages]]
-# name = "RBCM-LITE"
-# icon = "📊"
-# path = "rbcm_lite.py"
 
 
-[[pages]]
-name = "Statistic, Machine learning and python quiz"
-icon = "📊"
-path = "podomoro.py"
 
 
 

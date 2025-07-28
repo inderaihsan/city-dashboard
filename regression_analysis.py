@@ -10,6 +10,15 @@ import io
 from helper import filter_dataframe, transform_dataframe
 
 # Caching data to prevent reloading
+
+with st.expander("Why do i even create this?") :
+   st.write("Before jumping into complex machine learning models, our team usually starts with simple linear regression to understand the relationship between and instead of writing and running the same code over and over again i create this app to help us visualize the data and get the results quickly, wThis is a simple app, but it works for me, so i hope it works for you too :)")   
+with st.expander("How to use this?") :
+    st.write("1. Upload your file by clicking the 'Upload file' button.")
+    st.write("2. Choose the independent and dependent variables from the left sidebar.")
+    st.write("3. You can transform the data by clicking the 'Transform Data' button to transform the data into logarithmic or square root scale.") 
+    st.write("4. You can filter the data by clicking the 'Filter Data' button.")
+    st.write("5. Get the results by clicking the 'Start regression analysis' button.") 
 @st.cache_data
 def load_data(uploaded_file):
     return pd.read_excel(uploaded_file)

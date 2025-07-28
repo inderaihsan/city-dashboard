@@ -11,9 +11,15 @@ from helper import *
 from streamlit_folium import st_folium        
 import folium        
   
-# Set the header of the app        
-st.title("Excel to SHP")        
+# Set the header of the app             
+with st.expander("Why do i even create this?") :
+    st.write("There was a time when my team needed to visualize data from excel file (a lot of excel file) as quick as possible to identify mismatch or incorrect geo tagging, instead of loading it to GIS software like Qgis or ArcGIS, we can use this app to convert excel file to SHP file, and visualize it in a map. This is a simple app, but it works for me, so i hope it works for you too :)")
       
+with st.expander("How to use this?") :
+    st.write("1. Upload your excel file, make sure it has latitude and longitude columns, or any columns that can be used as coordinates (e.g. X and Y coordinates).")      
+    st.write("2. Select the latitude and longitude columns from the dropdown menus.")      
+    st.write("3. Click the 'Download SHP File' button to download the converted shapefile.")      
+    st.write("4. You can also visualize the data on a map.")
 # Initialize session state      
 if 'df' not in st.session_state:      
     st.session_state.df = None      
@@ -27,7 +33,7 @@ if 'map_created' not in st.session_state:
     st.session_state.map_created = False      
   
 # Upload Excel file        
-is_dummy = st.radio("use dummy data?", ["Yes","No"]) 
+is_dummy = st.radio("use dummy data?", ["No","Yes"]) 
 
 if (is_dummy == "No"):
     uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx", "xls"])        

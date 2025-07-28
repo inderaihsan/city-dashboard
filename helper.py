@@ -399,6 +399,12 @@ def get_server_url(condition='LOCAL') :
     
 
 
+def calculate_hpm(row) :
+    if (row['jenis_objek']==2) :
+        return ((row['harga_penawaran'] * (1 - (row['diskon']/100)))-row['kemungkinan_transaksi_bangunan'])/row['luas_tanah']
+    elif (row['jenis_objek']==1) :
+        return (row['harga_penawaran'] * (1 - (row['diskon']/100)))/row['luas_tanah']
+
 def visualize_poi_by_wkt(draw_geometry_wkt, engine):
     # Define POI layers and colors
     df_property_data = None
@@ -451,7 +457,7 @@ def visualize_poi_by_wkt(draw_geometry_wkt, engine):
                 gdf = gdf.clip(drawn_gdf)
                 gdf.explore(m=m, color=color, name=label, marker_kwds={'radius': 4, 'fillOpacity': 0.6})
             if(table_name == 'property_data_with_geometry'):
-                df_property_data = gdf
+                
                 gdf['harga_penawaran'] = pd.to_numeric(gdf['harga_penawaran'], errors='coerce' ) 
                 gdf['diskon'] = pd.to_numeric(gdf['diskon'], errors='coerce' ) 
                 gdf['luas_tanah'] = pd.to_numeric(gdf['luas_tanah'], errors='coerce' )
@@ -464,6 +470,10 @@ def visualize_poi_by_wkt(draw_geometry_wkt, engine):
               
                 gdf['hpm'] = gdf['harga_penawaran'] * (1 - (gdf['diskon']/100))/gdf['luas_tanah']
                 gdf = gdf[['hpm', 'lebar_jalan_di_depan', 'kondisi_wilayah_sekitar','tahun', 'luas_tanah','geometry', 'jenis_objek']] 
+                gdf = gdf[gdf['hpm'] < 100000000] 
+                gdf = gdf[((gdf['jenis_objek']==1) | (gdf['jenis_objek']==2))] 
+                gdf['jenis_objek'] = gdf['jenis_objek'].apply(lambda x:'Tanah Kosong' if x==1 else 'Rumah Residensial') 
+                df_property_data = gdf
                 # gdf = gdf[gdf['jenis_objek']==1]
             
             gdf.explore(
@@ -486,21 +496,21 @@ def visualize_poi_by_wkt(draw_geometry_wkt, engine):
 
 # try:
     land_price_hist = px.histogram(
-        x=df_property_data['kemungkinan_transaksi_tanahm2'],
+        x=df_property_data['hpm'],
         nbins=10,
         title="Land Price Distribution in Selected Area (IDR/m²)"
     ) 
 
-    building_price_hist = px.histogram( 
-        x=df_property_data['kemungkinan_transaksi_bangunanm2'],
-        nbins=10,
-        title="Building Price Distribution in Selected Area (IDR/m²)",
-    ) 
+    # building_price_hist = px.histogram( 
+    #     x=df_property_data['kemungkinan_transaksi_bangunanm2'],
+    #     nbins=10,
+    #     title="Building Price Distribution in Selected Area (IDR/m²)",
+    # ) 
 
 
     # Group by year and calculate the median price
     median_price_per_year = (
-        df_property_data.groupby('tahun')['kemungkinan_transaksi_tanahm2']
+        df_property_data.groupby('tahun')['hpm']
         .median()
         .reset_index()
         .sort_values('tahun')
@@ -510,9 +520,9 @@ def visualize_poi_by_wkt(draw_geometry_wkt, engine):
     yearly_price_development = px.line(
         median_price_per_year,
         x='tahun',
-        y='kemungkinan_transaksi_tanahm2',
+        y='hpm',
         title="Median Estimated Land Price (sqm) per Year",
-        labels={'tahun': 'Year', 'kemungkinan_transaksi_tanahm2': 'Median Land Price (IDR/m²)'},
+        labels={'tahun': 'Year', 'hpm': 'Median Land Price (IDR/m²)'},
         markers=True  # optional: adds markers on data points
     )
 
@@ -530,7 +540,10 @@ def visualize_poi_by_wkt(draw_geometry_wkt, engine):
         title="Surrounding Environment in Selected Area",
     )
 
-   
-    return m, bar_fig, land_price_hist, building_price_hist, yearly_price_development, surrounding_environment
+
+    # df_property_data['kord'] = df_property_data['latitude'].astype(str) + df_property_data['longitude'].astype(str) 
+    # df_property_data.drop_duplicates(subset='kord', inplace=True)
+    df_property_data.drop_duplicates(subset='geometry', inplace=True)
+    return m, bar_fig, land_price_hist, yearly_price_development, surrounding_environment, df_property_data[['jenis_objek', 'luas_tanah','kondisi_wilayah_sekitar',  'lebar_jalan_di_depan', 'hpm']]
 
 
